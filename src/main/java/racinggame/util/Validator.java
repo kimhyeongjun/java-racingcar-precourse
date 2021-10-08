@@ -18,4 +18,8 @@ public final class Validator {
     return maxLengthCheckFunc.apply(strArr[index]) ? Boolean.FALSE : doRecursiveProcess(index + 1, strArr, maxLengthCheckFunc);
   }
 
+  public static boolean isNumberFormat(String str) {
+    return str.matches("^[0-9]$");
+  }
+
 }
