@@ -7,7 +7,7 @@
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
 
 ## 기능
-* 자동차 이름 체크
+* 자동차 이름 유호성 확인
   * 자동차 이름은 5자 이하
 * 자동차 대수 추출
 * 자동차 생성
