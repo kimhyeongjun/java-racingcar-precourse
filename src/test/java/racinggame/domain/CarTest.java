@@ -15,4 +15,13 @@ class CarTest {
     assertEquals(name, car.getName());
   }
 
+  @Test
+  @DisplayName("자동차 이동 테스트")
+  void move() {
+    final String name = "good";
+    Car car = new Car(name);
+    car.move();
+    assertEquals(1, car.getDistance());
+  }
+
 }
