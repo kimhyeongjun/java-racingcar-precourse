@@ -16,6 +16,13 @@ import static org.mockito.Mockito.*;
 
 class RacingGameTest {
 
+  static Stream<Arguments> generateTestDataForGetWinners() {
+    return Stream.of(
+      Arguments.of(createCars(), new int[]{1, 2, 3}, 1),
+      Arguments.of(createCars(), new int[]{1, 3, 3}, 2)
+    );
+  }
+
   public static Stream<Arguments> generateTestDataForPlay() {
     return Stream.of(
       Arguments.of(4, new int[]{4, 3}, Arrays.asList("A : -", "B : -", "C : ")),
@@ -39,6 +46,30 @@ class RacingGameTest {
 
       MoveResult moveResult = racingGame.play();
       assertIterableEquals(expectResult, moveResult.get());
+    }
+  }
+
+  @ParameterizedTest
+  @DisplayName("레이싱 우승자 산정 테스트.")
+  @MethodSource("generateTestDataForGetWinners")
+  void getWinners(List<Car> cars, int[] moveCountArr, int expectResult) {
+    moveCars(cars, moveCountArr);
+    RacingGame racingGame = new RacingGame(cars);
+
+    List<Car> winners = racingGame.getWinners();
+    assertEquals(expectResult, winners.size());
+  }
+
+  private void moveCars(List<Car> cars, int[] moveCountArr) {
+    for (int i = 0; i < cars.size(); i++) {
+      Car car = cars.get(i);
+      moveCar(car, moveCountArr[i]);
+    }
+  }
+
+  private void moveCar(Car car, int moveCount) {
+    for (int i = 0; i < moveCount; i++) {
+      car.move();
     }
   }
 
