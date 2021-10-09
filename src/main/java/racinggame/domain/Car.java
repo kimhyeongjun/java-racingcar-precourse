@@ -1,10 +1,11 @@
 package racinggame.domain;
 
+import java.util.ArrayList;
+
 public class Car {
 
   private final CarName name;
   private Distance distance;
-
   public Car(final String name) {
     this.name = new CarName(name);
     this.distance = new Distance();
@@ -24,7 +25,7 @@ public class Car {
 
   @Override
   public String toString() {
-    return name.getName() + ":" + distance.toString();
+    return name.getName() + " : " + distance.toString();
   }
 
 }
