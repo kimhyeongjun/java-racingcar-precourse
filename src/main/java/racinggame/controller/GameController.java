@@ -42,7 +42,6 @@ public class GameController {
     for (int i = 0; i < moveCount; i++) {
       MoveResult moveResult = racingGame.play();
       GameViewer.printMoveResult(moveResult);
-      GameViewer.ln();
     }
     return new GameResult(racingGame.getWinners());
   }

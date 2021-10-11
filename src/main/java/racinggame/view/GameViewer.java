@@ -25,6 +25,7 @@ public final class GameViewer {
     for (String result : resultList) {
       Printer.info(result);
     }
+    GameViewer.ln();
   }
 
   public static void ln() {
