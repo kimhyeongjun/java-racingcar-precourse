@@ -12,8 +12,8 @@ public final class GameViewer {
 
   private GameViewer() {}
 
-  public static void printErrorMessageInvalidNameInput() {
-    Printer.error(ERROR_MESSAGE_INVALID_NAME_INPUT);
+  public static void printErrorMessageInvalidNameInput(Exception e) {
+    Printer.error(e.getMessage());
   }
 
   public static void printRacingResult(GameResult gameResult) {

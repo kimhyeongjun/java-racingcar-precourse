@@ -12,26 +12,26 @@ import racinggame.view.InputHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racinggame.core.GameOption.*;
 import static racinggame.enums.Message.*;
 
 public class GameController {
 
   public static void startGame() {
     String[] carNames = getCarNames();
-    List<Car> cars = createCars(carNames);
+    List<Car> cars;
+    try {
+      cars = createCars(carNames);
+    } catch (IllegalArgumentException e) {
+      GameViewer.printErrorMessageInvalidNameInput(e);
+      startGame();
+      return;
+    }
     GameResult gameResult = playGame(cars, inputMoveCount());
     GameViewer.printRacingResult(gameResult);
-    System.out.println("게임이 종료됐습니다.");
   }
 
   private static String[] getCarNames() {
-    String[] carNames = InputHandler.inputCarNames();
-    while (!Validator.checkLengthPerItemOfArray(carNames, CAR_NAME_MAX_LENGTH)) {
-      GameViewer.printErrorMessageInvalidNameInput();
-      carNames = InputHandler.inputCarNames();
-    }
-    return carNames;
+    return InputHandler.inputCarNames();
   }
 
   private static GameResult playGame(List<Car> cars, int moveCount) {
@@ -54,11 +54,10 @@ public class GameController {
     return Integer.parseInt(moveCount);
   }
 
-  private static List<Car> createCars(String[] carNames) {
+  private static List<Car> createCars(String[] carNames) throws IllegalArgumentException{
     List<Car> carList = new ArrayList<>();
     for (String carName : carNames) {
-      Car car = new Car(carName);
-      carList.add(car);
+      carList.add(new Car(carName));
     }
     return carList;
   }
