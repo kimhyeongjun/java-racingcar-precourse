@@ -4,6 +4,7 @@ import racinggame.domain.Car;
 import racinggame.domain.GameResult;
 import racinggame.domain.MoveResult;
 import racinggame.domain.RacingGame;
+import racinggame.util.Convertor;
 import racinggame.util.Printer;
 import racinggame.util.Validator;
 import racinggame.view.GameViewer;
@@ -12,6 +13,7 @@ import racinggame.view.InputHandler;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racinggame.core.GameOption.*;
 import static racinggame.enums.Message.*;
 
 public class GameController {
@@ -31,7 +33,7 @@ public class GameController {
   }
 
   private static String[] getCarNames() {
-    return InputHandler.inputCarNames();
+    return Convertor.convertStringToArray(InputHandler.inputCarNames(), CAR_NAME_REGEX);
   }
 
   private static GameResult playGame(List<Car> cars, int moveCount) {
