@@ -2,7 +2,7 @@ package racinggame.enums;
 
 public enum Message {
 
-  START_GAME("경주할 자동자 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분"),
+  START_GAME("경주할 자동자 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"),
   ASK_INPUT_MOVE_COUNT("시도할 횟수는 몇회인가요?"),
   END_GAME("실행결과"),
   WINNER("최종 우승자는 %s 입니다."),
